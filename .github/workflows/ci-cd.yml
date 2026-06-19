@@ -84,9 +84,6 @@ jobs:
       - name: Extract metadata
         id: meta
         uses: docker/metadata-action@v5
-        env:
-          # GHCR reads package description from multi-arch manifest annotations.
-          DOCKER_METADATA_ANNOTATIONS_LEVELS: index,manifest
         with:
           images: ${{ env.IMAGE_NAME }}
           tags: |
@@ -100,10 +97,6 @@ jobs:
             org.opencontainers.image.licenses=MIT
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
             org.opencontainers.image.revision=${{ github.sha }}
-          annotations: |
-            index,manifest:org.opencontainers.image.description=${{ env.IMAGE_DESCRIPTION }}
-            index,manifest:org.opencontainers.image.title=lidl-plus
-            index,manifest:org.opencontainers.image.version=${{ needs.test.outputs.version }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
@@ -113,7 +106,10 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          annotations: ${{ steps.meta.outputs.annotations }}
+          annotations: |
+            index:org.opencontainers.image.description=${{ env.IMAGE_DESCRIPTION }}
+            index:org.opencontainers.image.title=lidl-plus
+            index:org.opencontainers.image.version=${{ needs.test.outputs.version }}
           provenance: false
           cache-from: type=gha
           cache-to: type=gha,mode=max
