@@ -87,7 +87,8 @@ jobs:
           images: ${{ env.IMAGE_NAME }}
           tags: |
             type=raw,value=latest,enable={{is_default_branch}}
-            type=raw,value=${{ needs.test.outputs.version }}
+          labels: |
+            org.opencontainers.image.version=${{ needs.test.outputs.version }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v6

@@ -291,7 +291,7 @@ uv run lidl-plus backup -h
 - `Dockerfile` — multi-stage Alpine build, `WORKDIR /data`, `VOLUME /data`. Local build: `docker build -t ghcr.io/schlomo/lidl-plus .`
 - Default: `lidl-plus backup sync --data-dir /data`.
 - Mount host data: `-v "$(pwd)/data:/data"` plus `LIDL_*` env vars (`.env` / `--env-file`).
-- Published to `ghcr.io/schlomo/lidl-plus` via [`.github/workflows/ci-cd.yml`](.github/workflows/ci-cd.yml) on merge to `main` (`latest` + `1.<commit-count>.0`; no git tag releases).
+- Published to `ghcr.io/schlomo/lidl-plus` via [`.github/workflows/ci-cd.yml`](.github/workflows/ci-cd.yml) on merge to `main` (`latest` only; `1.<commit-count>.0` in OCI labels).
 - Refresh token: interactive `docker run -it … -l de -c DE browser-auth` (host browser + paste callback).
 - Do not bake secrets into the image.
 
