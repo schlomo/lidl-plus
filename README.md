@@ -170,7 +170,7 @@ data/
 
 ## Docker
 
-Multi-arch images (`linux/amd64`, `linux/arm64`) on [GitHub Container Registry](https://github.com/schlomo/lidl-plus/pkgs/container/lidl-plus). Published on merge to `main` via `.github/workflows/ci-cd.yml` (tags: `latest`, `1.<commit-count>.0`, short git SHA). Forks publish under `ghcr.io/<owner>/lidl-plus`.
+Multi-arch images (`linux/amd64`, `linux/arm64`) on [GitHub Container Registry](https://github.com/schlomo/lidl-plus/pkgs/container/lidl-plus). Published on merge to `main` via `.github/workflows/ci-cd.yml` (tags: `latest`, `1.<commit-count>.0`). Forks publish under `ghcr.io/<owner>/lidl-plus`.
 
 ### Quick start (backup sync)
 

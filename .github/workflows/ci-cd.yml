@@ -86,9 +86,8 @@ jobs:
         with:
           images: ${{ env.IMAGE_NAME }}
           tags: |
-            type=raw,value=${{ needs.test.outputs.version }}
             type=raw,value=latest,enable={{is_default_branch}}
-            type=sha,prefix=,format=short
+            type=raw,value=${{ needs.test.outputs.version }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
@@ -98,5 +97,6 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          provenance: false
           cache-from: type=gha
           cache-to: type=gha,mode=max
