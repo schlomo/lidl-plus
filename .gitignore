@@ -1,8 +1,15 @@
+# Python
 .idea/
 __pycache__/
 dist/
+.venv/
 venv/
-*.json
+*.egg-info/
 *.log
-**/*.egg-info/
-test.py
+
+# Local backup data
+data/
+out/
+
+# Legacy setuptools artifacts
+build/

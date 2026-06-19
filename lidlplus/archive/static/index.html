@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!-- this file is passed through Python .format() before being written to www/, don't add curly braces here -->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{title}</title>
+    <link rel="icon" href="{favicon}" type="image/svg+xml" sizes="any">
+    <link rel="stylesheet" href="{css}">
+</head>
+
+<body>
+    <header class="top">
+        <div class="top-inner">
+            <div class="top-head">
+                <a href="./" class="brand" id="brand">Lidl Plus Archive</a>
+                <span class="meta">{meta}</span>
+                <nav class="site-nav" aria-label="Archive sections">
+                    <a href="./" id="nav-receipts" class="nav-link is-active">Receipts</a>
+                    <a href="?view=products" id="nav-products" class="nav-link">Products</a>
+                </nav>
+            </div>
+            <div class="search-row">
+                <div class="search-wrap">
+                    <span class="search-icon" aria-hidden="true">⌕</span>
+                    <input id="q" type="search" enterkeyhint="search" placeholder="Search…" autocomplete="off"
+                        spellcheck="false">
+                    <button type="button" id="clear-q" class="icon-btn" hidden title="Clear search"
+                        aria-label="Clear search">×</button>
+                </div>
+                <p id="stats" class="stats"></p>
+            </div>
+        </div>
+    </header>
+    <main id="list-view" class="view">
+        <ul id="results"></ul>
+        <p id="empty" class="empty" hidden>No matching receipts.</p>
+    </main>
+    <main id="products-view" class="view" hidden>
+        <ul id="product-results"></ul>
+        <p id="products-empty" class="empty" hidden>No matching products.</p>
+    </main>
+    <main id="product-detail-view" class="view" hidden>
+        <nav class="detail-bar" aria-label="Product navigation">
+            <button type="button" id="product-back" class="btn">← Products</button>
+            <div class="detail-meta">
+                <strong id="product-title"></strong>
+                <span id="product-sub"></span>
+            </div>
+        </nav>
+        <ul id="product-purchases" class="purchase-list"></ul>
+    </main>
+    <main id="detail-view" class="view" hidden>
+        <nav class="detail-bar" aria-label="Receipt navigation">
+            <button type="button" id="back" class="btn">← Back</button>
+            <div class="detail-meta">
+                <strong id="detail-title"></strong>
+                <span id="detail-sub"></span>
+            </div>
+            <div class="detail-nav">
+                <button type="button" id="print" class="btn" title="Print receipt">Print</button>
+                <button type="button" id="prev" class="btn" title="Previous match (←)">‹</button>
+                <span id="match-pos" class="match-pos"></span>
+                <button type="button" id="next" class="btn" title="Next match (→)">›</button>
+            </div>
+        </nav>
+        <article id="receipt-body" class="receipt-body"></article>
+    </main>
+    <script>window.LIDL_DATA = "{data}"</script>
+    <script src="{app_js}"></script>
+</body>
+
+</html>

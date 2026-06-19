@@ -1,5 +1,5 @@
 """
-Exeptions
+Exceptions
 """
 
 

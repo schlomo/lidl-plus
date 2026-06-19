@@ -1,6 +1,12 @@
 MIT License
 
 Copyright (c) 2022 Andre Basche
+Copyright (c) 2026 Schlomo Schapiro
+
+Fork lineage:
+  https://github.com/schlomo/lidl-plus (this repository)
+    ← fork of https://github.com/yagueto/lidl-plus
+      ← fork of https://github.com/Andre0512/lidl-plus (original by Andre Basche)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

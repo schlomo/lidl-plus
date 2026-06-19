@@ -1,0 +1,12 @@
+{
+  "receipt_id": "23001934120260605709620",
+  "aligned_lines": {
+    "item_weight": "Erdbeeren kg                       4,26 A",
+    "item_qty": "Heidelbeeren          2,99 x   3   8,97 A",
+    "discount": "     Lidl Plus Rabatt             -0,22",
+    "total": "zu zahlen                        169,91"
+  },
+  "amount_column": 38,
+  "kg_detail_prefix_spaces": 3,
+  "blank_line_count_min": 2
+}
