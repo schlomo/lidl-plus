@@ -13,6 +13,7 @@ concurrency:
 env:
   REGISTRY: ghcr.io
   PYTHON_VERSION: "3.14"
+  IMAGE_DESCRIPTION: Lidl Plus API client, incremental receipt backup, and searchable local archive
 
 jobs:
   test:
@@ -83,12 +84,22 @@ jobs:
       - name: Extract metadata
         id: meta
         uses: docker/metadata-action@v5
+        env:
+          # GHCR reads package description from multi-arch manifest annotations.
+          DOCKER_METADATA_ANNOTATIONS_LEVELS: index,manifest
         with:
           images: ${{ env.IMAGE_NAME }}
           tags: |
             type=raw,value=latest,enable={{is_default_branch}}
+            type=raw,value=${{ needs.test.outputs.version }}
+            type=sha,prefix=,format=short
           labels: |
+            org.opencontainers.image.title=lidl-plus
+            org.opencontainers.image.description=${{ env.IMAGE_DESCRIPTION }}
             org.opencontainers.image.version=${{ needs.test.outputs.version }}
+            org.opencontainers.image.licenses=MIT
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
+            org.opencontainers.image.revision=${{ github.sha }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
@@ -98,6 +109,7 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          annotations: ${{ steps.meta.outputs.annotations }}
           provenance: false
           cache-from: type=gha
           cache-to: type=gha,mode=max
