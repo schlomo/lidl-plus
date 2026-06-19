@@ -100,6 +100,10 @@ jobs:
             org.opencontainers.image.licenses=MIT
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
             org.opencontainers.image.revision=${{ github.sha }}
+          annotations: |
+            index,manifest:org.opencontainers.image.description=${{ env.IMAGE_DESCRIPTION }}
+            index,manifest:org.opencontainers.image.title=lidl-plus
+            index,manifest:org.opencontainers.image.version=${{ needs.test.outputs.version }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
