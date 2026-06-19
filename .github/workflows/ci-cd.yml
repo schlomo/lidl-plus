@@ -59,7 +59,7 @@ jobs:
     needs: test
     if: github.ref == 'refs/heads/main'
     env:
-      IMAGE_NAME: ${{ env.REGISTRY }}/${{ github.repository }}
+      IMAGE_NAME: ghcr.io/${{ github.repository }}
     permissions:
       contents: read
       packages: write
@@ -98,7 +98,5 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          build-args: |
-            IMAGE_NAME=${{ env.IMAGE_NAME }}
           cache-from: type=gha
           cache-to: type=gha,mode=max

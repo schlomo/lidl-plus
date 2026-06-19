@@ -1,6 +1,5 @@
 # Project OCI labels (pyproject.toml). Tag locally with:
 #   docker build -t ghcr.io/schlomo/lidl-plus .
-# CI overrides IMAGE_NAME build-arg to ghcr.io/<github.repository>.
 FROM python:3.14-alpine AS builder
 
 WORKDIR /app
